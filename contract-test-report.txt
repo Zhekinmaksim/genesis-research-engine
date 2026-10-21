@@ -1,0 +1,27 @@
+Compiling 2 files with Solc 0.8.26
+Solc 0.8.26 finished in 380.13ms
+Compiler run successful!
+
+Ran 19 tests for test/GenesisResearch.t.sol:GenesisResearchTest
+[PASS] testBadFailureStatusCannotClearPending() (gas: 302051)
+[PASS] testBoundedOrderRejectsChangedPriceBeforeAnyPaymentOrBookkeeping() (gas: 64317)
+[PASS] testBoundedOrderUsesReviewedPriceAndAuthenticatesCallback() (gas: 309383)
+[PASS] testCommitRevealIsTimeLockedAndCannotBeReplaced() (gas: 168144)
+[PASS] testCopiedCommitmentCannotBeRevealedByDifferentParticipant() (gas: 110397)
+[PASS] testDuplicateIntakeIdRevertsWholePurchase() (gas: 393038)
+[PASS] testFuzzBudgetNeverOverspends(uint96,uint96) (runs: 256, μ: 424738, ~: 429313)
+[PASS] testOnePendingRequestAndBodyReplayProtection() (gas: 349803)
+[PASS] testOnlyAuthorizedResearcherCanSpendAndCanBeRevoked() (gas: 366742)
+[PASS] testOrdersExactProtocolAndClearsAllowance() (gas: 286203)
+[PASS] testPendingIntakeCannotChangeAndTimeoutDoesNotRefund() (gas: 1038129)
+[PASS] testPredictionCannotCrossEpochOrContractAndRespectsDeadline() (gas: 2021810)
+[PASS] testRefusalUnlocksWithoutRefundOrBudgetReset() (gas: 436465)
+[PASS] testRejectsEmptyOversizedBodiesAndFalseReturningToken() (gas: 158204)
+[PASS] testRejectsForeignSpoofedAndDuplicateCallbacks() (gas: 377124)
+[PASS] testResultCallbackFitsIntakeGasBudget() (gas: 305549)
+[PASS] testRevertedPurchaseRollsBackBudgetBodyAndApproval() (gas: 417387)
+[PASS] testSynchronousCallbackIsBlockedThenAsyncWorks() (gas: 326936)
+[PASS] testWithdrawalRestrictedAndInsufficientFundingBlocksOrders() (gas: 65434)
+Suite result: ok. 19 passed; 0 failed; 0 skipped; finished in 28.98ms (34.75ms CPU time)
+
+Ran 1 test suite in 34.24ms (28.98ms CPU time): 19 tests passed, 0 failed, 0 skipped (19 total tests)

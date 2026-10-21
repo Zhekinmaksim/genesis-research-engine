@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-21T11:09:06.729Z",
+  "chainId": 1,
+  "blockNumber": "26240579",
+  "address": "0x06f8ceff95e5d72887c575d2759e36230b711d06",
+  "owner": "0x550011CAdCC758969391050241B2Fc43ED1a4B97",
+  "spent": "0",
+  "worldCommitment": "0x190996ed4ed39d38bd9cf088077f0f9aa4afc5d926df034f0b4f792259599fac",
+  "pendingRequestId": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}

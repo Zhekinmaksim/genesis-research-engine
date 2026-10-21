@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "mode": "offline snapshots",
+  "checks": [
+    "Every manifest-listed source, artifact and verifier file matches SHA-256",
+    "Contract source matches the exact IMD-published deployed-source snapshot",
+    "Saved read-only contract snapshot distinguishes deployment ownership from zero research spending",
+    "Original public research archive matches its pinned SHA-256",
+    "Original IMD artifact bytes match accepted SHA-256",
+    "Prepared request body hash and artifact world/revision/research binding match",
+    "Production verifier accepts saved calldata, Requested event, IMD admission, job and original artifact",
+    "Verified proposal equals the proposal applied to the recorded experiment",
+    "Only water changed; both recorded measurements are growth 50, energy 40, survival false",
+    "Recomputed 19 → 14 compatible models; excluded IDs 07, 11, 13, 14, 16",
+    "All 576 reference model/condition outcomes match the production engine",
+    "Local experiment selector uses public observations and the known model family, not a hidden world import",
+    "24 separate local seeded fixtures complete four held-out combinations and verify their world commitments",
+    "Negative controls reject a substituted research ID, missing on-chain event and altered request body"
+  ],
+  "modelElimination": {
+    "before": 19,
+    "after": 14,
+    "excluded": [
+      7,
+      11,
+      13,
+      14,
+      16
+    ]
+  },
+  "localFixtures": 24,
+  "paidImdResearchCycles": 1,
+  "newPaidRequests": 0,
+  "limits": [
+    "Offline Ethereum/API snapshots are not independently authenticated consensus proofs. Use --online for a fresh read-only RPC/API check.",
+    "The two historical measurements are recorded evidence. Their secret world opening is not published or reconstructed by this package.",
+    "Local held-out validation is within a known 24-model synthetic family, not an IMD intelligence benchmark.",
+    "GenesisResearch was deployed separately. This historical research request used direct Intake."
+  ]
+}

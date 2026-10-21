@@ -1,0 +1,23 @@
+{
+  "name": "genesis-research-engine",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "verify": "node verify.mjs",
+    "build": "node build.mjs",
+    "test": "node --import tsx --test server/*.test.ts",
+    "test:contracts": "forge test --root contracts"
+  },
+  "dependencies": {
+    "viem": "2.57.7"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "tsx": "4.23.15"
+  }
+}

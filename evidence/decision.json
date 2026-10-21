@@ -1,0 +1,15 @@
+{
+  "expeditionId": "f6b33b79-876e-49b2-82c5-a0dfc1577feb",
+  "worldCommitment": "0x190996ed4ed39d38bd9cf088077f0f9aa4afc5d926df034f0b4f792259599fac",
+  "revision": 1,
+  "researchId": "ec8cebff-9a12-42af-9bdf-70313db2be36",
+  "hypothesis": "Water may improve plant growth, but the response could depend on mineral composition and light. Choose a controlled experiment that distinguishes these explanations.",
+  "hypothesisAssessment": "Public observation 1 reports growth 50, survival false, and energy 40 without water, with no mineral, under amber light at warm temperature. With only this observation, evidence is insufficient to establish a water benefit or dependence on minerals or light. A water-only contrast can test its effect in this setting, but cannot establish whether that effect changes across mineral or light conditions.",
+  "conditions": {
+    "water": true,
+    "mineral": "none",
+    "light": "amber",
+    "temperature": "warm"
+  },
+  "reason": "Compared with observation 1, this proposed experiment changes only water. It tests whether adding water changes growth from 50 at fixed mineral, light, and temperature, distinguishing a water benefit in this setting from no benefit. Mineral and light interactions would remain unresolved and require later controlled comparisons. This experiment has not been executed."
+}

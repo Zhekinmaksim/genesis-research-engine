@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-20T17:33:03.986Z",
+  "rpc": "https://ethereum-rpc.publicnode.com",
+  "chainId": 1,
+  "head": "26235313",
+  "address": "0x06f8ceff95e5d72887c575d2759e36230b711d06",
+  "txHash": "0x8549f90154b6e1b22c60a98ae71a3f78003640ca735cd9a5d7219f7eb21941b6",
+  "receipt": {
+    "status": "success",
+    "blockNumber": "26235291",
+    "blockHash": "0x2d2a88a3b15ddf074530c353f01988a4de5fc7598e3fee20ae834ef89fc547b7",
+    "contractAddress": null,
+    "from": "0xcecc29b037f5064fcdf45a5c318f132ef76aa551",
+    "to": "0xff03410d0fe5fa8f7f59f743de35e333d9857120",
+    "gasUsed": "2546967",
+    "effectiveGasPrice": "653439999"
+  },
+  "transaction": {
+    "from": "0xcecc29b037f5064fcdf45a5c318f132ef76aa551",
+    "to": "0xff03410d0fe5fa8f7f59f743de35e333d9857120",
+    "value": "0",
+    "inputBytes": 10372
+  },
+  "runtimeCodeBytes": 8486,
+  "runtimeCodeKeccak256": "0xdfb100324325b6f38632911aed3ab53de7a8fc5464fafc956a87febec05fedc3",
+  "owner": "0x550011CAdCC758969391050241B2Fc43ED1a4B97",
+  "ownerMatchesExpected": true,
+  "intake": "0xa43e6F75ee006411F79Ac1C84120606C2330DE82",
+  "asset": "0xD34a99Bc0f67aE1bbd63C660e6d0b0dd03E263B7",
+  "worldCommitment": "0x190996ed4ed39d38bd9cf088077f0f9aa4afc5d926df034f0b4f792259599fac",
+  "spendCap": "500000000000000000",
+  "price": "500000000000000000",
+  "spent": "0",
+  "pendingRequestId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "nativeBalanceWei": "0",
+  "imdBalance": "0",
+  "factoryEvents": [
+    {
+      "event": "ContractsLaunched",
+      "launchNumber": "2322",
+      "contracts": [
+        "0x06f8cEFf95E5D72887c575d2759E36230B711D06"
+      ],
+      "logIndex": 177
+    }
+  ],
+  "codeBeforeDeploymentBytes": 0,
+  "codeAtDeploymentBytes": 8486,
+  "factoryEventMatches": true
+}
