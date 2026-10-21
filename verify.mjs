@@ -17,7 +17,7 @@ try {
   assert.equal(sha(await read(path)),hash,'Changed package file: '+path);
  }
  ok(true,'Every manifest-listed source, artifact and verifier file matches SHA-256');
- const {Expedition,CANDIDATES,ALL_CONDITIONS,HOLDOUT,TRAINING,candidatesFor,conditionKey,decideExperiment,modelOutcome,simulatePublicModelOutcome,explainModelElimination,recordedResearch,parseResearchDecision,researchBodyHash,verifyResearchEvidence}=await import('./engine.mjs');
+ const {compareRecordedResearch,Expedition,CANDIDATES,ALL_CONDITIONS,HOLDOUT,TRAINING,candidatesFor,conditionKey,decideExperiment,modelOutcome,simulatePublicModelOutcome,explainModelElimination,recordedResearch,parseResearchDecision,researchBodyHash,verifyResearchEvidence}=await import('./engine.mjs');
  const contractRead=await json('evidence/contract-current-readonly.json');
  ok(sha(await read('contracts/src/GenesisResearch.sol'))==='2efc761467ef886317f5136ccb64bb88ecab7d0209db4e5edb0ebcf56f611a15','Contract source matches the exact IMD-published deployed-source snapshot');
  ok(contractRead.chainId===1&&contractRead.owner.toLowerCase()==='0x550011cadcc758969391050241b2fc43ed1a4b97'&&contractRead.spent==='0','Saved read-only contract snapshot distinguishes deployment ownership from zero research spending');
@@ -82,6 +82,14 @@ try {
   local.push({fixture:i,trainingExperiments:training.length,heldOutCorrect:4});
  }
  ok(true,'24 separate local seeded fixtures complete four held-out combinations and verify their world commitments');
+ const comparison=compareRecordedResearch(state);
+ assert.equal(comparison.baseline.compatibleModels,19);
+ assert.deepEqual(comparison.localChoices[1].conditions,comparison.imd.conditions);
+ assert.equal(comparison.imd.expectedRemainingModels,11);assert.equal(comparison.imd.actualRemainingModels,14);
+ assert.deepEqual(comparison.imd.branches.map(b=>[b.outcome.growth,b.modelCount]),[[0,2],[50,14],[100,3]]);
+ assert.equal(comparison.information.equalInformation,false);
+ assert.ok(comparison.localChoices.every(c=>c.measuredSeparately===false&&!Object.hasOwn(c,'measuredOutcome')));
+ ok(true,'Retrospective IMD/local comparison matches the Kepler choice, separates expectation 11 from observed 14 and invents no local measurements');
  // Negative controls: these must fail for semantic reasons, not a manifest mismatch.
  const wrongDecision={...decision,researchId:'00000000-0000-0000-0000-000000000000'};
  assert.throws(()=>parseResearchDecision(wrongDecision,record));

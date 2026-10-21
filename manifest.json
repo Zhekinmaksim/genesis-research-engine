@@ -1,17 +1,18 @@
 {
-  "format": "genesis-review-package-v1",
+  "format": "genesis-review-package-v2",
   "files": {
     ".gitignore": "50b8f83e3ea271cea19a4b2313a8d05f685225ca2b798d86115bc08a8df03820",
     "CONTRACT_ROLE.md": "9456a8c68b4bef9c8ff1b7ae2d163a9b4f92c88dfd6102c4864bc688aa02bb8f",
     "LICENSE": "eafe71b7a577443c79816fa3be4b9cf89127986854b1a155358a0b0098625794",
-    "README.md": "35f51ff41ff3e5d64ac3af109ae73a81556f62acc60e5fb937ff3ab5717c837c",
-    "build.mjs": "f273f6c1838e70df32f4565bd4de4bedda7b36b889b164d04ae9d05cd006d22e",
+    "README.md": "f5595034fd64edcaa2755be73c438c2d063aa4c4ed1cd02221e2ae8cdfa22c72",
+    "build.mjs": "498588ae728616a47abf53c5927845b3e8c272be9b71d81978368b30762a808d",
+    "compare.mjs": "cef965970fb5a4bc82f125745b14b086cc658117a99441b02094157c18d9538d",
     "contract-test-report.txt": "ebd4492a11ad21805067c5fda8e49aa716c07f4806fff5fa591358257080c4ac",
     "contracts/foundry.toml": "e405d486982ab10675b3beea053955d3352abbfd4ea1bfb64cfbca658c94e2fd",
     "contracts/src/GenesisResearch.sol": "2efc761467ef886317f5136ccb64bb88ecab7d0209db4e5edb0ebcf56f611a15",
     "contracts/test/GenesisResearch.t.sol": "5aefd09be5f2ce2792ebe2a8c275d9fe1ba20eed7fec049303d974966101c73c",
-    "engine-entry.ts": "3db2d79deb8bde2295e036af0135c6dd969b79bbf1e415b4f29e2b71cb95bfa0",
-    "engine.mjs": "bc2f0e24490c0747f7fe3e38a19073e4282379f4f4bd1c1fd7cb42ea486ee155",
+    "engine-entry.ts": "630bd4e5c5b8358af470612f8cc74ce6522ec11b41b59b0ef4c44bafe899701b",
+    "engine.mjs": "c0faa47231fddaf13039aa0f5fd3a4ff24960383d2724dfdb4753850141f3f5c",
     "evidence/contract-current-readonly.json": "00caaec91e7e79f2b43987155b4cf83f02bba70ca8d3c495b6d5e8cc9c11c541",
     "evidence/contract-deployment-snapshot.json": "e01ffd694618bf2bcecb348c370f6fc6f92b51d810f56580a65e5cc7c30aa83f",
     "evidence/contract-source-comparison.json": "0b4dfe73a7e3e6f09a026e023f431111d56046d1aec9bfada33611114ebe92a5",
@@ -27,6 +28,8 @@
     "server/imd.test.ts": "d8d64a639c90ed4ab42d39bce4a04098384fd9d86c135285669a44c2460f14af",
     "server/imd.ts": "d1565508ef1cbb81e3c428a679230882ea12b8bc55d55b5186af1f894aa59de0",
     "server/model-explanations.test.ts": "2e0f452155f858e95568f374273f565430584228bfadf113904ce1a8c03ba6d0",
+    "server/recorded-comparison.test.ts": "3822b7613b20f80fa62af39707db236a6cb1ce77cb050606508f27e7c9f12065",
+    "server/recorded-comparison.ts": "00ebb85234a3f5d9cfca9e741a9885be36030458fb4a72799582a5721b691daf",
     "server/registry.test.ts": "236d4c53f1890a3d531767aee088844614cbba838dad355de8cda5fba6068666",
     "server/registry.ts": "80823464ee0aa6fa6c3cf976d54e4a8754e6e1421bea301e2254b4d1a0b636a8",
     "server/research-evidence.test.ts": "7b1da90a6c29250b9854c0299394bfb1a80deccefc91cbbcb899918d89a92eaf",
@@ -41,9 +44,10 @@
     "shared/reference-models.ts": "f3b21019fcd00630c49ade9b4c7b3f55017ccf52cb1d5689d81698de3b81a285",
     "shared/registry-types.ts": "fe6227ec67d4839366978bf84eafcc0ab1b975b6ae4fcd6c31bb13559e684bcf",
     "shared/types.ts": "9769027f33aa3afe5eb01332220b921177ad793c8fb6a45f868f562400991d57",
+    "shared/user-scenario.ts": "85933b0e19f867a06a15dfd6da3f9886fe774f4168a7f2db651666c61afbb490",
     "src/lib/imd-wallet.ts": "430974b72c06f178da49ce3abe2c0952d17c4051c8bab3be3f9f721fc0e70e2c",
-    "verification-report.json": "b715403156e54f3b074cf4de4f1a0a32e9e55ab10bee4d631b0e2d6ebfbc5535",
-    "verify.mjs": "f84ad039db830cfa2ef4c1ba10e19691db89f9a3fa953b1db683f6729da07c03"
+    "verification-report.json": "ab3cb09302975ffca1c373fea1a1d10890c0fa2b99bf81d1137177074851d4cb",
+    "verify.mjs": "ce072bc4a2dd880514fca0c23b980589d25781bb49247e49ce0f15867cec63a4"
   },
   "scope": "Source snapshot, recorded public research and saved public provenance. See README.md and CONTRACT_ROLE.md for limits."
 }

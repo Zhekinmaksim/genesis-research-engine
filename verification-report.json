@@ -15,6 +15,7 @@
     "All 576 reference model/condition outcomes match the production engine",
     "Local experiment selector uses public observations and the known model family, not a hidden world import",
     "24 separate local seeded fixtures complete four held-out combinations and verify their world commitments",
+    "Retrospective IMD/local comparison matches the Kepler choice, separates expectation 11 from observed 14 and invents no local measurements",
     "Negative controls reject a substituted research ID, missing on-chain event and altered request body"
   ],
   "modelElimination": {

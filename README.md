@@ -58,3 +58,13 @@ These commands are optional for reviewers of the already bundled offline verifie
 - This repository contains the research engine, integration and review evidence, not the complete 3D frontend or an asset redistribution.
 
 Demo: https://imdgenesis.xyz · Judge passport: https://imdgenesis.xyz/judges · Recorded experience without 3D: https://imdgenesis.xyz/replay?view=text
+
+## Retrospective IMD / local comparison and learning scenario
+
+Run `node compare.mjs` to recalculate the comparison from the original public archive. The first automatic experiment was Ada's control, so Kepler would be the next local turn. IMD selected the same water-only contrast as Kepler. All three local strategy choices and the IMD proposal produce reference-family branches with 2, 14 and 3 models. With an explicit uniform model weighting, expected remaining models are (2² + 14² + 3²)/19 = 11. The historical IMD treatment actually left 14 models. Local alternatives were not executed separately; their unobserved results are not invented.
+
+The local selector knows the full model family and response formula. The original IMD request supplied the hypothesis, observation and available conditions, without that formula. This is one retrospective choice comparison with different prior information, not a statistical benchmark or proof of AI superiority or cost efficiency. Its value for the question is a controlled water contrast, rather than a claim to outperform the local selector.
+
+Production analysis source: server/recorded-comparison.ts. Public learning scenario: shared/user-scenario.ts. The additional offline comparison check is included in `node verify.mjs`. The original v1 ZIP remains preserved on the website.
+
+Learning scenario: https://imdgenesis.xyz/learn — predict the recorded water response, inspect the evidence, then ask what interaction remains unresolved. A free new local world is a separate expedition, not a continuation of the historical IMD request.

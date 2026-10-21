@@ -12,5 +12,5 @@ if(process.argv.includes('--manifest')){
   if(info.isDirectory())await visit(path+'/');else files[path]=createHash('sha256').update(await readFile(new URL(path,root))).digest('hex');
  }}
  await visit('');
- await writeFile(new URL('manifest.json',root),JSON.stringify({format:'genesis-review-package-v1',files,scope:'Source snapshot, recorded public research and saved public provenance. See README.md and CONTRACT_ROLE.md for limits.'},null,2)+'\n');
+ await writeFile(new URL('manifest.json',root),JSON.stringify({format:'genesis-review-package-v2',files,scope:'Source snapshot, recorded public research and saved public provenance. See README.md and CONTRACT_ROLE.md for limits.'},null,2)+'\n');
 }
