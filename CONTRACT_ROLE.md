@@ -1,4 +1,6 @@
-# GenesisResearch: role and current use
+> **Later mainnet usage:** The text below describes the original review-v2 snapshot, when spent() was zero. A later real request was funded through GenesisResearch: https://etherscan.io/tx/0x59fcd440cb6ef056f33529ac1d74f13e9e1ca069c973748ea7b226f23b2f9a56 . The real Intake delivered its success callback: https://etherscan.io/tx/0x70d660e98ad243efd268777ce0eb1653f202273e5b27141a2d2b793d3d11eb09 . Its accepted IMD decision was applied once after verification. Current continuation, costs and source: https://imdgenesis.xyz/research-loop and https://imdgenesis.xyz/feedback/README.md . The original review ZIP and its checksums remain unchanged.
+
+# GenesisResearch: historical review-v2 snapshot
 
 ## Two separate operations
 

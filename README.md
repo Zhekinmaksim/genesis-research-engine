@@ -1,70 +1,117 @@
-# GENESIS research engine and real IMD evidence
+# GENESIS
 
-GENESIS is a synthetic black-box ecosystem. Local algorithms spend internal simulation credits to distinguish a known family of 24 models. Optional external IMD research proposes an experiment from public observations. The simulator controls the measured outcome.
+Genesis is a science game about choosing a useful experiment. You are given an island, but not the rules that make its plants grow. Change the water, minerals, light or temperature, inspect the response, and decide what to test next.
 
-## Verify in one command — no installation, wallet or network
+**[Play Genesis](https://imdgenesis.xyz/)** · **[Follow the real IMD expedition](https://imdgenesis.xyz/research-loop)** · **[Choose the next test yourself](https://imdgenesis.xyz/research-loop/practice)** · **[Judge passport](https://imdgenesis.xyz/judges)**
 
-Requires Node.js 20 or later. Download and extract the review ZIP, open the extracted directory, then run:
+This repository contains the public research engine, IMD integration, deployed contract source, saved public evidence and verification tools. The full 3D frontend, visual assets, operator credentials and private world openings are outside this repository.
+
+## Start with the evidence
+
+Two real IMD research requests have been applied in the same recorded synthetic world. The second received the first result and revised its assessment before proposing another experiment.
+
+| Record | What happened | Route | Where to check it |
+|---|---|---|---|
+| Original experience, historical review v2 | IMD proposed adding water while holding the other conditions fixed. Growth stayed at 50/100; compatible models went from 19 to 14. | Builder wallet → real IMD Intake → accepted decision → Genesis measurement | [Walkthrough](https://imdgenesis.xyz/replay?view=text), `evidence/`, [unchanged review archive](https://imdgenesis.xyz/review/genesis-review-v2.zip) |
+| Real feedback continuation | IMD received both measurements and the earlier assessment. It proposed adding basalt with water present. Growth stayed at 50/100; compatible models went from 14 to 10. | Owner → GenesisResearch → real IMD Intake → delivered callback → Genesis measurement | [Walkthrough](https://imdgenesis.xyz/research-loop), `feedback/`, [updated verifier archive](https://imdgenesis.xyz/feedback/genesis-real-loop-v2.zip) |
+
+The earlier contract snapshot reports `spent() = 0` because it predates the continuation. The later request spent **0.5 IMD** through GenesisResearch; its lifetime budget is now exhausted. The old snapshot is a historical record, not the current contract state.
+
+The [recorded local EVM lab](https://imdgenesis.xyz/research-lab) is a separate test with mock token, Intake and research provider. It demonstrates local contract behavior and is not another real IMD expedition.
+
+## Verify without installing anything
+
+Requires Node.js 20+. These commands use the prebuilt engines and saved public snapshots. They need no wallet, token, API key or npm installation.
 
 ```sh
+# Original real experience and separate local reproducibility fixtures
 node verify.mjs
+
+# Real contract-funded continuation: feedback, artifact, callback, gas and model counts
+node feedback/verify.mjs
+
+# Compare the first IMD choice with the local selectors
+node compare.mjs
 ```
 
-The verifier checks every manifest-listed file, the byte-exact original IMD artifact and archived public record, production request/event/admission validation against saved public snapshots, and the artifact-to-measurement binding. It recomputes **19 → 14** models and excludes **07, 11, 13, 14, 16**. Negative controls reject altered evidence. It also runs 24 separate free local seeded fixtures through held-out prediction and commitment reveal.
+The continuation verifier checks the exact request calldata, matching events and admission, accepted artifact SHA-256, world/revision binding, delivered callback and stored hashes, actual gas receipts, feedback inclusion and five rejection controls. It recalculates the change from 14 to 10 possible models.
 
-No dependencies are installed by that command. `engine.mjs` is bundled from the supplied, unchanged production TypeScript files. Its dependency license notices are retained.
-
-Optional fresh public provenance check:
+### Choose an RPC for fresh online verification
 
 ```sh
-node verify.mjs --online
+node feedback/verify.mjs --online
+node feedback/verify.mjs --online --rpc https://ethereum-rpc.publicnode.com
+node feedback/verify.mjs --online --rpc https://your-archive-rpc.example --rpc https://your-fallback.example
 ```
 
-This adds read-only Ethereum JSON-RPC and GET requests to the official IMD API. It never signs, submits a transaction, opens a job or spends tokens. Availability of those third-party endpoints is outside GENESIS's control. Offline snapshots do not independently prove Ethereum consensus or certify the truth of measurements.
+Use an archive-capable Ethereum mainnet endpoint of your choice. Repeat `--rpc` for up to four candidates. You may instead set `GENESIS_VERIFY_RPC_URL` in your shell. The verifier does not load `.env` and does not print your RPC URL or credentials. It refuses RPC writes and calls only public read endpoints.
 
-## The actual result
+Offline verification always runs first. Online mode then checks fresh chain and official IMD data. If an endpoint cannot provide historical state, it can try the next configured RPC. Saved data is never substituted for a successful online check.
 
-Control: no water, no mineral, amber light, warm temperature. Treatment: water added, other conditions unchanged. Both historical measurements: growth 50/100, energy 40/100, survival false. Five reference models disagree with that observation; 14 remain. One comparison does not identify a unique law or show that water never matters.
+| Outcome | Meaning |
+|---|---|
+| Exit 0 | All requested checks passed. Without `--online`, this means offline only. |
+| Exit 2 | Offline passed, but fresh online verification could not be established. The report distinguishes transport, historical-state, wrong-chain and IMD API failures. |
+| Exit 3 | Fresh data did not satisfy an evidence check. Offline success does not override the mismatch. |
+| Other nonzero exit | Invalid command arguments or an offline integrity failure. |
 
-Original research request: ec8cebff-9a12-42af-9bdf-70313db2be36. Ethereum transaction: https://etherscan.io/tx/0xb7b1af7d4a1b560d120ba45b25f6c8d64d3d0143f0204f71a233cb2a78b2b361 . Original artifact: https://api.imd.fun/artifacts/a832e2611353d3cb8e8c29d5c6250fe591b58be650413f03a48eb6fe7c746fc9 . Historical cost: 0.5 IMD + 0.0000157250756555 ETH aggregate gas. No payment is repeated by this package.
+The [feedback instructions](https://imdgenesis.xyz/feedback/README.md) and [release checksums](https://imdgenesis.xyz/feedback/releases.json) are also public. The original review-v2 and feedback-v1 ZIP files remain unchanged; feedback verifier v2 adds RPC selection and diagnostics without purchasing another task.
 
-## Source map
+## What you can do in the game
 
-- server/research.ts: observation-only experiment selection, model filtering and the public training/holdout split. Ada, Kepler and Lin are deterministic local strategies, not external IMD agents.
-- server/world.ts: private world commitment, simulator, internal budget, persistence projection, authenticated proposal application and held-out validation. Actual user snapshots, seeds, salts and private keys are excluded.
-- server/imd.ts and research-evidence.ts: external request schema and strict evidence verification. The engine verifier does not invoke their paid wallet path; no signer is included.
-- server/registry.ts and shared/registry-types.ts: optional contract preflight. src/lib/imd-wallet.ts is the public browser transaction preparation code; it contains no wallet keys and is not imported by the offline verifier.
-- shared/reference-models.ts and model-explanations.ts: public model predictions and explanations for rejection.
-- contracts/: exact IMD-published contract source and local mock tests. Read CONTRACT_ROLE.md for the separation between deployment and historical direct-Intake research.
-- evidence/: public archive, original decision bytes, read-only Ethereum/IMD snapshots and deployment/source comparison snapshots.
+Start with 40 internal game credits. A training experiment costs 2 credits and measures growth, energy and survival. These credits are game counters, not IMD tokens.
 
-## Rebuild and run source tests (optional)
+Choose the conditions yourself or follow Ada, Kepler and Lin. Those three are local algorithms: Ada favors average information gain, Kepler favors controlled comparisons, and Lin favors reducing uncertainty in the least helpful outcome. They know the public family of 24 possible models and receive observations, not the selected hidden model or its opening.
+
+When one model remains, Genesis checks predictions for four held-out conditions before revealing the world's original configuration. This local validation is separate from an evaluation of IMD intelligence.
+
+After the second real IMD result, [the free follow-up exercise](https://imdgenesis.xyz/research-loop/practice) asks you to choose a controlled next test and explain why it is useful. It shows which of the ten remaining models would fit each hypothetical response. Those are conditional calculations, not newly measured outcomes or another IMD response. Your choices do not alter the real journal.
+
+## What IMD and the contract actually do
+
+The IMD agent proposes an experiment and explains its reasoning from public evidence. Genesis measures the response using its deterministic simulator. A paid proposal cannot change the world's rules or supply its own measurement.
+
+The first research request called IMD Intake directly. The follow-up used **GenesisResearch** at [`0x06f8ceff95e5d72887c575d2759e36230b711d06`](https://etherscan.io/address/0x06f8ceff95e5d72887c575d2759e36230b711d06), deployed through IMD Launch #2322. The contract enforces its lifetime cap and expected price, prevents repeated bodies, keeps one request pending, and authenticates the Intake callback. The callback establishes delivery and provenance, not scientific truth.
+
+- [Follow-up order](https://etherscan.io/tx/0x59fcd440cb6ef056f33529ac1d74f13e9e1ca069c973748ea7b226f23b2f9a56)
+- [Delivered callback](https://etherscan.io/tx/0x70d660e98ad243efd268777ce0eb1653f202273e5b27141a2d2b793d3d11eb09)
+- [Official IMD admission and completion](https://api.imd.fun/intake/1/0x59fcd440cb6ef056f33529ac1d74f13e9e1ca069c973748ea7b226f23b2f9a56)
+- [Accepted follow-up artifact](https://api.imd.fun/artifacts/731fae9ec1ce1354d832c15b259e028fd1e6910aba1b3f0e043666df4249ac3e)
+- [Contract role and historical snapshots](CONTRACT_ROLE.md)
+
+The continuation cost 0.5 IMD plus **0.000158312559587896 ETH** in aggregate owner gas for approval, funding and ordering. Replaying or verifying it makes no further payment. This contract instance has used its full 0.5/0.5 IMD lifetime budget and cannot buy another research job.
+
+## Build and test the published source
 
 ```sh
-npm ci --ignore-scripts
-npm run build
+npm ci
 npm test
-forge test --root contracts
+npm run build
+node verify.mjs
+node feedback/verify.mjs
 ```
 
-These commands are optional for reviewers of the already bundled offline verifier. `build.mjs` rebuilds engine.mjs from the supplied source. To regenerate the file manifest after an intentional source edit, run `node build.mjs --manifest`; changes invalidate the original release hashes. The published Git commit and website ZIP SHA-256 pin the reviewed release.
+`npm test` covers the observation-only engine, research provenance, callback binding, feedback preparation and the post-feedback exercise. It also runs the RPC transport and CLI diagnostic tests. Those tests use explicit fixtures, not real payments. Contract tests additionally require Foundry:
 
-## What is and is not established
+```sh
+npm run test:contracts
+```
 
-- The raw response is a real IMD research proposal; the simulator's measurement is recorded by Genesis.
-- The package reproduces candidate elimination from public measurements. The hidden opening of the historical world is intentionally absent; it does not reconstruct the original hidden model.
-- Four held-out conditions in a local fixture belong to the same synthetic world and known model family. This is not an independent AI benchmark or discovery of laws of nature.
-- GenesisResearch is a separate IMD deployment. Its local tests are not a completed mainnet contract-funded research cycle.
-- This repository contains the research engine, integration and review evidence, not the complete 3D frontend or an asset redistribution.
+The original local-world verifier tests 24 separate deterministic fixtures and their held-out predictions. These fixtures are not a rerun of the historical IMD world's hidden configuration.
 
-Demo: https://imdgenesis.xyz · Judge passport: https://imdgenesis.xyz/judges · Recorded experience without 3D: https://imdgenesis.xyz/replay?view=text
+## What remains unproven
 
-## Retrospective IMD / local comparison and learning scenario
+Genesis explores a defined synthetic model family. It does not discover laws of the physical world. The historical world's seed and salt have not been published, so reviewers can recalculate candidate elimination from the saved measurements but cannot independently regenerate those measurements from the opening.
 
-Run `node compare.mjs` to recalculate the comparison from the original public archive. The first automatic experiment was Ada's control, so Kepler would be the next local turn. IMD selected the same water-only contrast as Kepler. All three local strategy choices and the IMD proposal produce reference-family branches with 2, 14 and 3 models. With an explicit uniform model weighting, expected remaining models are (2² + 14² + 3²)/19 = 11. The historical IMD treatment actually left 14 models. Local alternatives were not executed separately; their unobserved results are not invented.
+The two recorded IMD choices coincide with the local Kepler choices. The information available to them differs, so this is not an equal-information benchmark and does not establish that IMD outperforms the local algorithms. The useful demonstrated behavior is the explanation of a controlled test and the revision of an assessment after receiving evidence. A learning benefit for real users has not yet been measured.
 
-The local selector knows the full model family and response formula. The original IMD request supplied the hypothesis, observation and available conditions, without that formula. This is one retrospective choice comparison with different prior information, not a statistical benchmark or proof of AI superiority or cost efficiency. Its value for the question is a controlled water contrast, rather than a claim to outperform the local selector.
+No ongoing autonomous paid expedition is claimed. There were two recorded research requests across two routes. The local mock lab, the separate free worlds and the real IMD records are labelled separately.
 
-Production analysis source: server/recorded-comparison.ts. Public learning scenario: shared/user-scenario.ts. The additional offline comparison check is included in `node verify.mjs`. The original v1 ZIP remains preserved on the website.
+## Checksums and versions
 
-Learning scenario: https://imdgenesis.xyz/learn — predict the recorded water response, inspect the evidence, then ask what interaction remains unresolved. A free new local world is a separate expedition, not a continuation of the historical IMD request.
+- Original public world archive SHA-256: `281d59f730460ddf86d075da1e6d39082bb58dad492a2630b9225f31a154d54f`
+- Continuation public archive SHA-256: `1e985c840f4f1242208ff44c0ea374725af8660d9fa770607b75acb98ab75479`
+- Original decision artifact SHA-256: `a832e2611353d3cb8e8c29d5c6250fe591b58be650413f03a48eb6fe7c746fc9`
+- Follow-up decision artifact SHA-256: `731fae9ec1ce1354d832c15b259e028fd1e6910aba1b3f0e043666df4249ac3e`
+
+Each download has its own file manifest. The on-chain result-document Keccak is a different hash from the decision artifact's SHA-256. See [evidence levels](https://imdgenesis.xyz/evidence) for the precise boundaries.

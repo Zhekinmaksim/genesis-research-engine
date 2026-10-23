@@ -1,6 +1,6 @@
 {
   "name": "genesis-research-engine",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -9,9 +9,10 @@
   },
   "scripts": {
     "verify": "node verify.mjs",
-    "build": "node build.mjs",
-    "test": "node --import tsx --test server/*.test.ts",
-    "test:contracts": "forge test --root contracts"
+    "build": "node feedback/build.mjs && node build.mjs --manifest",
+    "test": "node --import tsx --test server/*.test.ts feedback/*.test.mjs",
+    "test:contracts": "forge test --root contracts",
+    "verify:feedback": "node feedback/verify.mjs"
   },
   "dependencies": {
     "viem": "2.57.7"

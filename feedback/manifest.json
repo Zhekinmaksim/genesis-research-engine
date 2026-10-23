@@ -1,0 +1,27 @@
+{
+  "format": "genesis-real-loop-package-v2",
+  "files": {
+    "README.md": "1e827b4860d0fe7a3fcfda6c4f87467656fb081dfc8cbd820095c78b345f9221",
+    "build.mjs": "50dd9f54be1d5301eb29f4520949cc8ae7d892d3a9b09419c9e0f6039b298b69",
+    "cli.test.mjs": "7855d19aec118a4e45cb05d5263bfb85606c69b5a79e6bc19d6d90c0256e029b",
+    "continuation-public.json": "1e985c840f4f1242208ff44c0ea374725af8660d9fa770607b75acb98ab75479",
+    "engine.mjs": "7e9392d2927d890f1ac9f759f82c2edf1e9f0749d1d3a8ec2e7fe7460ae4c628",
+    "entry.ts": "bb26916165b8e3034667fade3ce273ceb0b5f657a4be5253d10708e9903a029c",
+    "recorded-world.json": "281d59f730460ddf86d075da1e6d39082bb58dad492a2630b9225f31a154d54f",
+    "rpc.mjs": "e92bdea787fe3792d6e04d2f1d0213d5f33c7ea0b964cab0e37b0658633b881c",
+    "rpc.test.mjs": "f44a075a33fccabc5872a03b15ffc209d0cbcbd00526057563ad1694d3d252b3",
+    "snapshots.json": "09544454ac83367678007c5c51958643feb2f159a0f22ec996f79ce8a7aff248",
+    "source/contracts/src/GenesisResearch.sol": "e727591f1d0baf19b2b4ec76502bcaa680633bde968cac34bc03cf46e079bac7",
+    "source/server/feedback-exercise.ts": "f9fb76acd591470b5e8e00a350effd44c4fa0240c8d2c779b6701caf716752c4",
+    "source/server/imd-followup-callback.ts": "ae7a724c52c326c6a0365966488367d2e6fec867909c088b2349b1de305fc77a",
+    "source/server/imd-followup.ts": "17996455f75bdc309ade16a8044d348202e04cfcfb5931c1e0a02613572f3fa3",
+    "source/server/imd.ts": "772d5e72a3b44b88531a1574517c96b80fd7b8b938143f4e1f06a6f081184855",
+    "source/server/real-imd-loop.ts": "a91707e1d114cc7fef6fd18318b75e68860bfa52c6e0945140d975d46016874d",
+    "source/server/research-evidence.ts": "866bb484d848e2651f0ac56406c707aae6fb385576772d602455fe231324c00f",
+    "source/server/research.ts": "83421c15c014461af574883d7cf32aede31e8ac8bb9c3a61c793a2afe0531f59",
+    "source/shared/imd-types.ts": "6a222e9b41bf401d85a882bbe9fccebe8ab0ebe91d1b0bcd36eb09c8be17abea",
+    "source/shared/project-evidence.ts": "0e851048fdb7661cc00211e2203552eec044efcf48af6452f4c87c6df9ebb3b1",
+    "source/shared/types.ts": "9769027f33aa3afe5eb01332220b921177ad793c8fb6a45f868f562400991d57",
+    "verify.mjs": "6c04940368b4c3b62e98b6bd4e0296f16b43da4e9dabec654741aacd842e303a"
+  }
+}

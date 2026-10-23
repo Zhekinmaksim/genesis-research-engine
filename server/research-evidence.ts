@@ -103,10 +103,12 @@ export async function verifyResearchEvidence(record: ImdResearchRecord, options:
       const decoded = decodeFunctionData({ abi: researchRegistryEvidenceAbi, data: tx.input });
       if (decoded.functionName !== 'orderResearch' || decoded.args[0] !== body || decoded.args[1] !== amount) fail('The registry call does not contain the exact research body and expected price.');
       if (!rpc.getCode || !rpc.readContract || !record.registryCodeHash) fail('Historical registry identity cannot be verified by this RPC.');
-      const [code, intake, asset, world] = await Promise.all([
+      let historical: unknown[];
+      try { historical = await Promise.all([
         rpc.getCode({ address: registry, blockNumber: receipt.blockNumber }),
         ...['intake', 'asset', 'worldCommitment'].map(functionName => rpc.readContract!({ address: registry, abi: researchRegistryEvidenceAbi, functionName, blockNumber: receipt.blockNumber })),
-      ]);
+      ]); } catch { throw new ImdApiError('Historical Ethereum registry state is unavailable from this RPC. Choose an archive-capable endpoint; no fresh verification has been established.', 503); }
+      const [code, intake, asset, world] = historical;
       if (typeof code !== 'string' || code === '0x' || keccak256(code as Hex) !== record.registryCodeHash || String(intake).toLowerCase() !== IMD_INTAKE || String(asset).toLowerCase() !== IMD_ASSET || String(world).toLowerCase() !== record.worldCommitment.toLowerCase()) fail('The registry runtime code or world configuration differs from its prepared identity.');
     } else {
       const decoded = decodeFunctionData({ abi: researchIntakeAbi, data: tx.input });
